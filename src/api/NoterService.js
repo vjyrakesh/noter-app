@@ -8,6 +8,10 @@ class NoterService {
     getOneNote(id) {
         return axios.get(`http://localhost:8080/notes/${id}`)
     }
+
+    addNote(note) {
+        return axios.post("http://localhost:8080/notes", note)
+    }
 }
 
 export default new NoterService()
