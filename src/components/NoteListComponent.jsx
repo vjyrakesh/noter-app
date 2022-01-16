@@ -14,17 +14,11 @@ export default function NoteListComponent() {
     },[])
 
     return (
-        <div>
-            <ul>
-                {
-                    notes.map(
-                        note =>
-                        <li key={note.id}>
-                            <NotePreviewComponent note={note}/>
-                        </li> 
-                    )
-                }
-            </ul>
+        <div className='container d-flex my-3'>
+            {
+                notes.map(
+                    note => <NotePreviewComponent note={note} key={note.id}/>)
+            }
         </div>
     )
 }

@@ -8,14 +8,12 @@ export default function NewNoteComponent(props) {
     const [tags, setTags] = useState([])
     
     function submitForm(values) {
-        alert(JSON.stringify(values, null, 2))
         const noteTags = []
         values.tagNames.map(tag => noteTags.push({name:tag}))
         console.log(noteTags)
 
         NoterService.addNote({title:values.title,description:values.description,tags:noteTags})
         .then(response => {
-            console.log("Note added successfully")
             props.history.push("/notes")
         })
     }
@@ -42,23 +40,46 @@ export default function NewNoteComponent(props) {
     }
 
     return(
-        <div>
-            New Note
+        <div className='container p-3 '>
+            <h3>Add new note</h3>
             <Formik onSubmit={submitForm} initialValues={{title:'',description:'',tagNames:[]}} validate={validateValues}>
                 <Form>
-                    <ErrorMessage name='title' component='div'/>
-                    <label htmlFor='title'>Title</label>
-                    <Field name='title' type='text'/>
-                    <ErrorMessage name='description' component='div'/>
-                    <label htmlFor='description'>Description</label>
-                    <Field name='description' as='textarea'/><br/>
-                    <Field name='tagNames' as='select' multiple={true}>
-                        {
-                            tags.map(tagName => <option value={tagName} key={tagName}>{tagName}</option>)
-                        }
-                    </Field>
+                    <div>
+                        <ErrorMessage name='title' component='div'/>
+                        <label htmlFor='title' className='form-label'>Title</label>
+                        <Field name='title' type='text' className='form-control'/>
+                    </div><br/>
+                    <div>
+                        <ErrorMessage name='description' component='div'/>
+                        <label htmlFor='description' className='form-label'>Description</label>
+                        <Field name='description' as='textarea' className='form-control'/><br/>
+                    </div>
+                    <div>
+                        <label htmlFor='tagNames' className='form-label'>Tags</label>
+                        <div className='row'>
+                            <div className='col-2'>
+                                <Field name='tagNames' as='select' multiple={true} className='form-select'>
+                                {
+                                    tags.map(tagName => <option value={tagName} key={tagName}>{tagName}</option>)
+                                }
+                                </Field>
+                            </div>
+                        </div>
+                        
+                        <div className='form-text'>
+                            You can select multiple tags.
+                        </div>
+                    </div><br/>
+                    <div className='row g-2'>
+                        <div className='col-1'>
+                            <button type='submit' className='btn btn-success'>Submit</button>
+                        </div>
+                        <div className='col-1'>
+                            <button type='reset' className='btn btn-warning'>Reset</button>
+                        </div>
                     
-                    <button type='submit'>Submit</button>
+                    </div>
+                    
                 </Form>
             </Formik>
             

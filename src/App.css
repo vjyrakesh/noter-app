@@ -1,6 +1,6 @@
-.App {
+/*.App {
   text-align: center;
-}
+}*/
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +35,39 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.one-note {
+  width: 35%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.note-preview {
+  width: 35%;
+  margin: 10px;
+
+}
+
+.note-preview :hover {
+  background-color: #eeeeee;
+  
+}
+
+.close-button {
+  float: right;
+}
+
+.search {
+  width: 40%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.navmenu {
+  background-color: aquamarine;
+}
+
+.view-note-btn {
+  margin-bottom: 0;
 }
