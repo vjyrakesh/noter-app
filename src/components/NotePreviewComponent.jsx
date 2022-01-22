@@ -20,7 +20,7 @@ export default function NotePreviewComponent(props) {
                         </button>
                     </div>
             </div>
-            <ModalNoteDetails note={props.note}/>
+            <ModalNoteDetails note={props.note} history={props.history}/>
         </>
         
     )

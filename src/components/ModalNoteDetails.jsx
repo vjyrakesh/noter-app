@@ -3,7 +3,10 @@ import moment from 'moment'
 
 export default function ModalNoteDetails(props) {
 
-    
+    function handleUpdate() {
+        console.log("update clicked")
+        props.history.push(`/notes/${props.note.id}/update`)
+    }
 
     return (
         <div className="modal fade" id={`exampleModal${props.note.id}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -21,6 +24,7 @@ export default function ModalNoteDetails(props) {
                     </div>
                 </div>
                 <div className="modal-footer">
+                    <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={()=>handleUpdate()}>Update</button>
                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
                 </div>

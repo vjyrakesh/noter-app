@@ -4,13 +4,12 @@ import NewNoteComponent from "./NewNoteComponent"
 import HeaderComponent from "./HeaderComponent"
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import TagListComponent from "./TagListComponent"
+import UpdateNoteComponent from "./UpdateNoteComponent"
 
 
 export default function NoterAppComponent() {
     return (
         <div>
-            
-            
             <Router>
                 <>
                     <HeaderComponent/>
@@ -22,6 +21,7 @@ export default function NoterAppComponent() {
                             <div className="col-10">
                             <Switch>
                                 <Route path="/notes/new" component={NewNoteComponent}/>
+                                <Route path="/notes/:id/update" component={UpdateNoteComponent}/>
                                 <Route path="/notes/:id" component={NoteDetailsComponent}/>
                                 <Route path="/notes" component={NoteListComponent}/>
                                 <Route component={NoteListComponent}/>
@@ -30,8 +30,6 @@ export default function NoterAppComponent() {
                         </div>
 
                     </div>
-                    
-                    
                 </>
             </Router>
         </div>

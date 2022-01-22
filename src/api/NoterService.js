@@ -12,6 +12,10 @@ class NoterService {
     addNote(note) {
         return axios.post("http://localhost:8080/notes", note)
     }
+
+    updateNote(id, note) {
+        return axios.put(`http://localhost:8080/notes/${id}`, note)
+    }
 }
 
 export default new NoterService()
