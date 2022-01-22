@@ -16,6 +16,10 @@ class NoterService {
     updateNote(id, note) {
         return axios.put(`http://localhost:8080/notes/${id}`, note)
     }
+
+    deleteNote(id) {
+        return axios.delete(`http://localhost:8080/notes/${id}`)
+    }
 }
 
 export default new NoterService()
