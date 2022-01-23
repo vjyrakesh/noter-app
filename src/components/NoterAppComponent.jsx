@@ -5,6 +5,7 @@ import HeaderComponent from "./HeaderComponent"
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import TagListComponent from "./TagListComponent"
 import UpdateNoteComponent from "./UpdateNoteComponent"
+import LoginComponent from "./LoginComponent"
 
 
 export default function NoterAppComponent() {
@@ -20,6 +21,7 @@ export default function NoterAppComponent() {
                             </div>
                             <div className="col-10">
                             <Switch>
+                                <Route path="/login" component={LoginComponent}/>
                                 <Route path="/notes/new" component={NewNoteComponent}/>
                                 <Route path="/notes/:id/update" component={UpdateNoteComponent}/>
                                 <Route path="/notes/:id" component={NoteDetailsComponent}/>
