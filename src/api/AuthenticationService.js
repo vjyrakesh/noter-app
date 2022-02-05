@@ -13,7 +13,9 @@ class AuthenticationService {
     }
 
     deRegisterUser() {
-        sessionStorage.removeItem("authUser")
+        return axios.get("http://localhost:8080/logout")
+        
+        
     }
 
     isUserAuthenticated() {
