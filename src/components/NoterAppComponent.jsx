@@ -8,6 +8,7 @@ import UpdateNoteComponent from "./UpdateNoteComponent"
 import LoginComponent from "./LoginComponent"
 import LogoutComponent from "./LogoutComponent"
 import HeaderWithRouter from "./HeaderComponent"
+import AuthenticatedRoute from "./AuthenticatedRoute"
 
 
 export default function NoterAppComponent() {
@@ -24,11 +25,11 @@ export default function NoterAppComponent() {
                             <div className="col-10">
                             <Switch>
                                 <Route path="/login" component={LoginComponent}/>
-                                <Route path="/logout" component={LogoutComponent}/>
-                                <Route path="/notes/new" component={NewNoteComponent}/>
-                                <Route path="/notes/:id/update" component={UpdateNoteComponent}/>
-                                <Route path="/notes/:id" component={NoteDetailsComponent}/>
-                                <Route path="/notes" component={NoteListComponent}/>
+                                <AuthenticatedRoute path="/logout" component={LogoutComponent}/>
+                                <AuthenticatedRoute path="/notes/new" component={NewNoteComponent}/>
+                                <AuthenticatedRoute path="/notes/:id/update" component={UpdateNoteComponent}/>
+                                <AuthenticatedRoute path="/notes/:id" component={NoteDetailsComponent}/>
+                                <AuthenticatedRoute path="/notes" component={NoteListComponent}/>
                                 <Route component={LoginComponent}/>
                             </Switch>            
                             </div>
