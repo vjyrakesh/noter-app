@@ -1,4 +1,5 @@
 import { Field, Form, Formik } from "formik";
+import { Link } from "react-router-dom";
 import AuthenticationService from "../api/AuthenticationService";
 
 export default function LoginComponent(props) {
@@ -39,6 +40,9 @@ export default function LoginComponent(props) {
                     </div>
                 </Form>
             </Formik>
+            <div className="container">
+                <Link to="/register">Register</Link>
+            </div>
         </div>
     )
 }

@@ -17,8 +17,6 @@ class AuthenticationService {
 
     deRegisterUser() {
         return axios.get("http://localhost:8080/logout")
-        
-        
     }
 
     isUserAuthenticated() {
@@ -36,6 +34,10 @@ class AuthenticationService {
                 return config
             }
         )
+    }
+
+    signUp(firstName, lastName, username, password) {
+        return axios.post("http://localhost:8080/register",{firstName,lastName,username,password})
     }
 }
 
