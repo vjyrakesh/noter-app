@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import NoterService from "../api/NoterService"
 import NotePreviewComponent from "./NotePreviewComponent"
+import TagListComponent from './TagListComponent'
 
 export default function NoteListComponent(props) {
     const [notes, setNotes] = useState([])
@@ -23,11 +24,21 @@ export default function NoteListComponent(props) {
     }
 
     return (
-        <div className='container d-flex my-3'>
-            {
-                notes.map(
-                    note => <NotePreviewComponent note={note} key={note.id} history={props.history} reRender={shouldReRender}/>)
-            }
+        <div className='container'>
+            <div className='row'>
+                <div className="col-2">
+                    <TagListComponent/>
+                </div>
+                <div className="col-10">
+                    <div className='container d-flex my-3'>
+                    {
+                        notes.map(note => <NotePreviewComponent note={note} key={note.id} history={props.history} reRender={shouldReRender}/>)
+                    }
+                    </div>
+                    
+                </div>
+            </div>
+            
         </div>
     )
 }

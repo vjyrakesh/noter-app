@@ -3,13 +3,16 @@ import axios from "axios"
 class AuthenticationService {
 
     login(username, password) {
+        console.log("username: " + username + ", password: " + password)
         const basicAuthHeader = 'Basic ' + window.btoa(username + ':' + password)
-        this.setupAxiosInterceptor(basicAuthHeader)
-        return axios.post("http://localhost:8080/login", {username})
+        
+        return axios.post("http://localhost:8080/login", {username}, {headers: {'Authorization': basicAuthHeader}})
     }
 
-    registerUser(username) {
+    registerUser(username, password) {
         sessionStorage.setItem("authUser", username)
+        const basicAuthHeader = 'Basic ' + window.btoa(username + ':' + password)
+        this.setupAxiosInterceptor(basicAuthHeader)
     }
 
     deRegisterUser() {

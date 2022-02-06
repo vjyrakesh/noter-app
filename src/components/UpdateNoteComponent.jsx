@@ -48,7 +48,7 @@ export default function UpdateNoteComponent(props) {
     }
 
     return(
-        <div className='container p-3 '>
+        <div className='container p-3 col-8'>
             <h3>Update note</h3>
             <Formik onSubmit={submitForm} initialValues={{title:note.title,description:note.description,tagNames:note.tags}} validate={validateValues}  enableReinitialize={true}>
                 <Form>
@@ -80,10 +80,10 @@ export default function UpdateNoteComponent(props) {
                     </div><br/>
                     <div className='row g-2'>
                         <div className='col-1'>
-                            <button type='submit' className='btn btn-success'>Submit</button>
+                            <button type='submit' className='btn btn-success mx-3'>Submit</button>
                         </div>
                         <div className='col-1'>
-                            <button type='reset' className='btn btn-warning'>Reset</button>
+                            <button type='reset' className='btn btn-warning mx-4'>Reset</button>
                         </div>
                     
                     </div>
