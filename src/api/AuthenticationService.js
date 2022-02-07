@@ -2,6 +2,8 @@ import axios from "axios"
 
 class AuthenticationService {
 
+    interceptor = null
+
     login(username, password) {
         console.log("username: " + username + ", password: " + password)
         const basicAuthHeader = 'Basic ' + window.btoa(username + ':' + password)
@@ -16,7 +18,10 @@ class AuthenticationService {
     }
 
     deRegisterUser() {
-        return axios.get("http://localhost:8080/logout")
+        if(this.interceptor)
+            console.log("interceptor not null")
+        axios.interceptors.request.eject(this.interceptor)
+        return axios.post("http://localhost:8080/logout")
     }
 
     isUserAuthenticated() {
@@ -27,7 +32,7 @@ class AuthenticationService {
     }
 
     setupAxiosInterceptor(basicAuthHeader) {
-        axios.interceptors.request.use(
+        this.interceptor = axios.interceptors.request.use(
             (config) => {
                 if(this.isUserAuthenticated())
                     config.headers.authorization = basicAuthHeader
